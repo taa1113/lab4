@@ -1,0 +1,90 @@
+﻿@using WebApplication1.Helpers
+@using WebApplication1.Models.ViewModels
+@model EnterprisesViewModel
+
+@{
+    ViewData["Title"] = "Предприятия";
+}
+
+<h2>Предприятия</h2>
+
+<p>
+</p>
+<table class="table" width="100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Enterprises.FirstOrDefault().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enterprises.FirstOrDefault().OwnershipForm)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enterprises.FirstOrDefault().Adress)
+            </th>
+            <th>
+                Фамилия менеджера
+            </th>
+            <th>
+                Имя менеджера
+            </th>
+            <th>
+                Телефон менеджера
+            </th>
+            <th>
+                Фамилия гл. энергетика
+            </th>
+            <th>
+                Имя гл. энергетика
+            </th>
+            <th>
+                Телефон гл. энергетика
+            </th>
+            <th>
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Enterprises)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelitem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.OwnershipForm)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Adress)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Manager.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Manager.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Manager.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.CPE.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.CPE.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.CPE.Phone)
+                </td>
+                <td>
+                    <button>Удалить</button>
+                    <button>Изменить</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+</div>

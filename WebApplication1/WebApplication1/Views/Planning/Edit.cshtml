@@ -1,0 +1,62 @@
+﻿@model PlannedEvent
+
+@{
+    ViewData["Title"] = "Редактирование планируемого мероприятия";
+}
+
+<h2>редактирование планируемого мероприятия</h2>
+
+@using (Html.BeginForm())
+{
+    <h4>Планируемое мероприятие</h4>
+
+    @Html.HiddenFor(model => model.Id)
+
+    <p>
+        Планируемое мероприятие <br>
+        @Html.DropDownListFor(model => model.EventId, ViewBag.Events as SelectList)
+    </p>
+    
+    <p>
+        Предприятие <br>
+        @Html.DropDownListFor(model => model.EnterpriseId, ViewBag.Enterprises as SelectList)
+    </p>
+
+    <p>
+        Начало мероприятия <br>
+        @Html.EditorFor(model => model.DateOfStart)
+    </p>
+
+    <p>
+        Конец мероприятия <br>
+        @Html.EditorFor(model => model.DateOfEnd)
+    </p>
+
+    <p>
+        Объём <br>
+        @Html.EditorFor(model => model.Scope)
+    </p>
+
+    <p>
+        Затраты <br>
+        @Html.EditorFor(model => model.Expenses)
+    </p>
+
+    <p>
+        Экономический эффект <br>
+        @Html.EditorFor(model => model.EconomicEffect)
+    </p>
+
+    <p>
+        Ответственный за проведение мероприятия <br>
+        @Html.DropDownListFor(model => model.EmployeeId, ViewBag.Employees as SelectList)
+    </p>
+    <p>
+        Номер финансирования <br>
+        @Html.DropDownListFor(model => model.FinanceId, ViewBag.SourcesOfFinancing as SelectList)
+    </p>
+
+    <p>
+        <input type="submit" value="Сохранить изменения">
+    </p>
+}

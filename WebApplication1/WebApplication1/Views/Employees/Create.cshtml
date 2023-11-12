@@ -1,0 +1,41 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "Добавление сотрдуника";
+}
+
+<h2>Добавление сотрудника</h2>
+
+@using (Html.BeginForm())
+{
+    <h4>Сотрудник</h4>
+
+    <p>
+        Фамилия <br>
+        @Html.EditorFor(model => model.Surname)
+    </p>
+
+    <p>
+        Имя <br>
+        @Html.EditorFor(model => model.Name)
+    </p>
+
+    <p>
+        Отчество <br>
+        @Html.EditorFor(model => model.MiddleName)
+    </p>
+
+    <p>
+        Телефон <br>
+        @Html.EditorFor(model => model.Phone)
+    </p>
+
+    <p>
+        Должность <br>
+        @Html.EditorFor(model => model.Position)
+    </p>
+
+    <p>
+        <input type="submit" value="Добавить">
+    </p>
+}

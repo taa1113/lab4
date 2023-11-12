@@ -1,0 +1,139 @@
+﻿@using WebApplication1.Helpers
+@using WebApplication1.Models.ViewModels
+@model WebApplication1.Models.ViewModels.PlanningViewModel
+
+@{
+    ViewData["Title"] = "Планирование";
+}
+
+<h2>Планирование энергосберегающих мероприятий</h2>
+
+<p>
+    @Html.ActionLink("Запланировать мероприятие", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Event.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Event.Unit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Enterprise.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().DateOfStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().DateOfEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Scope)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Expenses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().EconomicEffect)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Responsible.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Responsible.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Responsible.MiddleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Responsible.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Finance.Enterprise)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Finance.Organisation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Finance.Ministry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Finance.RepublicBudget)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlannedEvents.FirstOrDefault().Finance.LocalBudget)
+            </th>
+            <th>
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PlannedEvents)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelitem => item.Event.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Event.Unit)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Enterprise.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.DateOfStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.DateOfEnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Scope)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Expenses)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.EconomicEffect)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Responsible.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Responsible.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Responsible.MiddleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Responsible.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Finance.Enterprise)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Finance.Organisation)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Finance.Ministry)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Finance.RepublicBudget)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Finance.LocalBudget)
+                </td>
+                <td>
+                    @Html.ActionLink("Удалить", "Remove", new { id = item.Id }) |
+                    @Html.ActionLink("Изменить", "Edit", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x}))
+</div>

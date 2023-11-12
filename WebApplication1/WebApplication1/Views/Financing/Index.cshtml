@@ -1,0 +1,68 @@
+﻿@using WebApplication1.Helpers
+@using WebApplication1.Models.ViewModels
+@model FinancingViewModel
+
+@{
+    ViewData["Title"] = "Отдел кадров";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Таблица финансирования</h2>
+
+<p>
+    @Html.ActionLink("Добавить финансирование", "Create")
+</p>
+<table class="table" width="100%">
+    <thead>
+        <tr>
+            <th>
+                Ср-ва предприятия
+            </th>
+            <th>
+                Ср-ва вышестоящей организации
+            </th>
+            <th>
+                Ср-ва министерства
+            </th>
+            <th>
+                Ср-ва республ. бюджет
+            </th>
+            <th>
+                Ср-ва локального бюджета
+            </th>
+            <th>
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Financings)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelitem => item.Enterprise)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Organisation)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.Ministry)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.RepublicBudget)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.LocalBudget)
+                </td>
+                <td>
+                    @Html.ActionLink("Удалить", "Remove", new { id = item.Id }) |
+                    @Html.ActionLink("Изменить", "Edit", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x}))
+</div>

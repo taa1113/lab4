@@ -1,0 +1,28 @@
+﻿@model Event
+
+@{
+    ViewData["Title"] = "Добавление мероприятия";
+}
+
+<h2>Добавить мероприятие</h2>
+
+@using (Html.BeginForm())
+{
+    <h4>Мероприятие</h4>
+
+    @Html.HiddenFor(model => model.Id)
+
+    <p>
+        Наименование мероприятия <br>
+        @Html.EditorFor(model => model.Name)
+    </p>
+
+    <p>
+        Единица измерения <br>
+        @Html.EditorFor(model => model.Unit)
+    </p>
+
+    <p>
+        <input type="submit" value="Добавить">
+    </p>
+}

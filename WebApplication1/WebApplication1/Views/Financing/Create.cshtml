@@ -1,0 +1,41 @@
+﻿@model SourceOfFinancing
+
+@{
+    ViewData["Title"] = "Добавление финансирования";
+}
+
+<h2>Добавление финансирования</h2>
+
+@using(Html.BeginForm())
+{
+    <h4>Финансирование</h4>
+
+    <p>
+        Средства предприятия <br>
+        @Html.EditorFor(model => model.Enterprise)
+    </p>
+
+    <p>
+        Средства вышестоящей организации <br>
+        @Html.EditorFor(model => model.Organisation)
+    </p>
+
+    <p>
+        Средства министерства <br>
+        @Html.EditorFor(model => model.Ministry)
+    </p>
+
+    <p>
+        Средства из республиканского бюджета <br>
+        @Html.EditorFor(model => model.RepublicBudget)
+    </p>
+
+    <p>
+        Средства из локального бюджета <br>
+        @Html.EditorFor(model => model.LocalBudget)
+    </p>
+
+    <p>
+        <input type="submit" value="Добавить">
+    </p>
+}
